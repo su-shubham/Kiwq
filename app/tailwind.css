@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+}
+
+html,
+body {
+  @apply bg-[#1a1b26];
+  color-scheme: dark;
+  image-rendering: pixelated;
+}
+
+/* Pixel Art Frame */
+.pixel-frame {
+  @apply relative p-1;
+  background: #ff2222;
+  box-shadow: 
+    0 0 0 4px #ff2222,
+    0 0 0 8px #22aaff,
+    0 0 0 12px #ffdd00;
+  image-rendering: pixelated;
+}
+
+.pixel-frame::before {
+  content: '';
+  @apply absolute -top-6 left-1/2 w-8 h-8 -translate-x-1/2;
+  background: url('/cloud.png') no-repeat center;
+  background-size: contain;
+}
+
+.pixel-frame::after {
+  content: '';
+  @apply absolute -bottom-8 left-0 right-0 h-4;
+  background: linear-gradient(to right, #22cc44, #116622);
+}
+
+/* Pixel Buttons */
+.pixel-button {
+  @apply relative px-4 py-2 bg-[#2a2a3a] border-2;
+  border-color: #4a4a5a;
+  box-shadow: 
+    inset -2px -2px 0 #1a1a2a,
+    inset 2px 2px 0 #5a5a6a;
+  image-rendering: pixelated;
+  transition: all 0.1s ease;
+}
+
+.pixel-button:hover {
+  @apply bg-[#3a3a4a];
+  transform: translateY(-1px);
+}
+
+.pixel-button:active {
+  @apply bg-[#1a1a2a];
+  box-shadow: 
+    inset 2px 2px 0 #1a1a2a,
+    inset -2px -2px 0 #5a5a6a;
+  transform: translateY(1px);
+}
+
+/* Gradients */
+.cyber-gradient {
+  background: linear-gradient(135deg, 
+    #ff2222 0%,
+    #ff00ff 25%,
+    #22aaff 50%,
+    #22ff22 75%,
+    #ffdd00 100%
+  );
+  background-size: 400% 400%;
+  animation: cyber-shift 15s ease infinite;
+}
+
+@keyframes cyber-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-[#1a1b26];
+  border: 2px solid #2a2a3a;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-[#2a2a3a];
+  border: 2px solid #4a4a5a;
+  image-rendering: pixelated;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-[#3a3a4a];
+}
